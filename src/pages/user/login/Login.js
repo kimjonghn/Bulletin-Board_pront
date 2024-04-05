@@ -14,7 +14,6 @@ const Login = () => {
     const onChangeInputHandle = (e) => {
         const {name , value} = e.target;
         setLoginUser({...loginUser, [name]: value})
-        console.log(loginUser)
     }
     const loginHandleSubmit = async() => {
         const option = {
@@ -25,13 +24,10 @@ const Login = () => {
         try{
             const response = await axios.post("http://localhost:8080/auth/login", JSON.stringify(loginUser), option)
             localStorage.setItem("accessToken", response.data);
-            console.log(localStorage.setItem("accessToken", response.data));
-            console.log("성공");
             setRefresh(true);
         }catch(error){
             console.log(error)
             console.log(error.response.data);
-            console.log("다시해 틀렸어 멍청아")
         }
     }
 

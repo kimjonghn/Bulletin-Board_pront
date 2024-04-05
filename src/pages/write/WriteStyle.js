@@ -5,51 +5,52 @@ export const container = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 800px;
+    width: 1000px;
     height: 100vh;
-    border: 1px solid;
-    border-radius: 6px;
     margin: auto;
-`
 
-export const contentHeader = css`
-    display: flex;
-    width: 700px;
-    height: 40px;
-`;
+    border: 1px solid;`
 
-export const contentNum = css`
-    width: 50px;
-    height: 40px;
+export const titleBox = css`
     display: flex;
     justify-content: center;
-`;
-
-export const contentTitle = css`
-    width: 550px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-`;
-
-export const contentBox = css`
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     width: 700px;
-    height: 600px;
-    border: 1px solid black;
-    border-radius: 6px;
-`;
-export const writeContainer = css`
+    height: 100px;
+    
+`
+export const titleBoxInput = css`
     width: 700px;
+    height: 80px;
+    border: 1px solid black;
+    align-items: center;
+    font-size: 40px;
+`
+
+export const content = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 500px;
+    `
+
+export const contentInput = css`
+    width: 700px;
+    height: 470px;
+    border: 1px solid black;
+    resize: none;
+    font-size: 15px;
+`
+export const sendBox = css`
     display: flex;
     justify-content: flex-end;
-`;
-export const writeButtonStyle = css`
-    width: 54px;
-    margin-top: 10px;
+    width: 700px;
+
+`
+export const send = css`
+    width: 70px;
+    height: 30px;
     background-color: white;
     border-radius: 6px;
     border: 1px solid black;
@@ -61,4 +62,4 @@ export const writeButtonStyle = css`
         background-color: white;
         color: black;
     }
-`;
+    `
