@@ -13,11 +13,18 @@ export const container = css`
 
 export const titleBox = css`
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     width: 700px;
     height: 100px;
     
+`
+export const errorMessage =css`
+    display: flex;
+    justify-content: flex-start;
+    color: red;
+    font-size: 10px;
 `
 export const titleBoxInput = css`
     width: 700px;

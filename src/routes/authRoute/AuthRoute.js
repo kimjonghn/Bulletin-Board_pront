@@ -13,14 +13,12 @@ const AuthRoute = ({ path, element }) => {
         const accessToken = `Bearer ${localStorage.getItem("accessToken")}`;
         const response = await axios.get("http://localhost:8080/auth/authenticate", 
         {headers: {Authorization: accessToken}});
-        console.log("response : " + response.data)
         return response;
     },{
         onSuccess: (response) => {
             if(response.status === 200){
                 if(response.data){
                     setAuthState(true)
-                    console.log("트루 : " + authState)
                 }
             }
         }
@@ -41,7 +39,6 @@ const AuthRoute = ({ path, element }) => {
     }
 
     if(!authState){
-        console.log("authState: " + authState)
         return <Navigate to="auth/login"/>
     }
     return element;
