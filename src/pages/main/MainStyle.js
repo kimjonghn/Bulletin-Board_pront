@@ -30,12 +30,12 @@ export const contentTitle = css`
     height: 40px;
     display: flex;
     justify-content: center;
+    margin-left: 35px;
 `;
 
 export const contentBox = css`
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     width: 700px;
     height: 600px;
@@ -60,5 +60,32 @@ export const writeButtonStyle = css`
     &:active{
         background-color: white;
         color: black;
+    }
+`;
+export const content = css`
+    display: flex;
+    justify-content: center;
+    width: 700px;
+    height: 50px;
+    border: 1px solid black;
+`;
+export const boardId = css`
+    margin-left: 10px;
+    /* margin-left: auto; */
+`;
+export const boardTitleContainer = css`
+    flex-grow: 1;
+    text-align: center;
+`;
+
+export const boardTitle = css`
+    border: none;
+    background-color: white;
+    &:hover{
+        font-size: 15px;
+    }
+    &:active{
+        font-size: 15px;
+        font-weight: 700;
     }
 `;

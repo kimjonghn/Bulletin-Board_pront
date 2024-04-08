@@ -27,7 +27,6 @@ const Write = () => {
                 alert("등록이 성공적으로 되었습니다.")
                 navigate("/")
             }
-            console.log(response.data);
         }catch(error){
 
         }
