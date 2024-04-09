@@ -6,6 +6,7 @@ import Register from "./pages/user/register/Register";
 import AuthRoute from "./routes/authRoute/AuthRoute";
 import Main from "./pages/main/Main";
 import Write from "./pages/write/Write";
+import ViewPost from "./pages/viewPost/ViewPost";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/auth/register" element={<AuthRoute path="/auth/register" element={<Register/>}/>}/>
       <Route path="/" element={<AuthRoute path="/" element={<Main/>}/>}/>
       <Route path="/board/write" element={<AuthRoute path="/board/write" element={<Write/>}/>}/>
+      <Route path="/board/view/:boardId" element={<AuthRoute path="/board/view/:boardId" element={<ViewPost/>}/>}/>
     </Routes>
   );
 }

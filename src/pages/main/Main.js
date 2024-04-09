@@ -4,6 +4,7 @@ import * as s from './MainStyle';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import axios  from 'axios';
+import { boardId } from './MainStyle';
 
 const Main = () => {
     const navigate = useNavigate();
@@ -26,8 +27,8 @@ const Main = () => {
             setBoardState(false)
         }
     });
-    const contentBtn = () => {
-
+    const contentBtn = (boardId) => {
+        navigate(`board/view/${boardId}`)
     }
 
     const clickHandle = () => {

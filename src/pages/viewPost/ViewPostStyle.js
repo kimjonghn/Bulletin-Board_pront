@@ -7,57 +7,47 @@ export const container = css`
     align-items: center;
     width: 1000px;
     height: 100vh;
-    margin: auto;
+    margin: auto; 
 
     border: 1px solid;`
 
+export const writer = css`
+    width: 700px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+   
+`
 export const titleBox = css`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
     width: 700px;
-    height: 100px;
-    
-`
-export const errorMessage =css`
-    display: flex;
-    justify-content: flex-start;
-    color: red;
-    font-size: 10px;
-`
-export const titleBoxInput = css`
-    width: 695px;
     height: 80px;
-    border: 1px solid black;
-    align-items: center;
     font-size: 40px;
-`
+    border: 1px solid black;
+`;
 
 export const content = css`
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 700px;
-    height: 500px;
-    `
-
-export const contentInput = css`
+    margin-top: 20px;
     width: 700px;
     height: 470px;
     border: 1px solid black;
-    resize: none;
     font-size: 15px;
-`
-export const sendBox = css`
+    `
+export const buttonContainer = css`
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 700px;
-
+    margin-top: 5px;
 `
-export const send = css`
+export const modifyContainer = css`
+`
+
+export const buttonStyle = css`
     width: 70px;
-    height: 30px;
+    height: 25px;
     background-color: white;
     border-radius: 6px;
     border: 1px solid black;
@@ -69,4 +59,4 @@ export const send = css`
         background-color: white;
         color: black;
     }
-    `
+`

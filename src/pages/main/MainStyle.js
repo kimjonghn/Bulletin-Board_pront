@@ -67,11 +67,10 @@ export const content = css`
     justify-content: center;
     width: 700px;
     height: 50px;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
 `;
 export const boardId = css`
     margin-left: 10px;
-    /* margin-left: auto; */
 `;
 export const boardTitleContainer = css`
     flex-grow: 1;
