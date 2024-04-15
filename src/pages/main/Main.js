@@ -5,11 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import axios  from 'axios';
 import { boardId } from './MainStyle';
+import { FaUserCircle } from "react-icons/fa";
+import UserInfo from '../userInfo/UserInfo';
 
 const Main = () => {
     const navigate = useNavigate();
     const [ boardState, setBoardState ] = useState(true);
     const [ boardData, setBoardData ] = useState([]);
+    const [ isOpen, setIsOpen] = useState(false);
 
     const getBoard = useQuery(["getBoard"], async() => {
         const option = {
@@ -27,6 +30,10 @@ const Main = () => {
             setBoardState(false)
         }
     });
+    const userInfoOnClick = () => {
+        setIsOpen(!isOpen);
+    }
+
     const contentBtn = (boardId) => {
         navigate(`board/view/${boardId}`)
     }
@@ -37,6 +44,12 @@ const Main = () => {
 
     return (
         <div css={s.container}>
+            <div css={s.headerContainer}>
+                <div css={s.userInfoContainer}>
+                    <FaUserCircle css={s.settingButton} onClick={userInfoOnClick}/>
+                    <UserInfo css={s.userInfo} isOpen={isOpen}/>
+                </div>
+            </div>
             <div css={s.contentHeader}>
                 <p css={s.contentNum}>No</p>
                 <p css={s.contentTitle}>제목</p>

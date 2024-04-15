@@ -3,13 +3,33 @@ import { css } from "@emotion/react";
 export const container = css`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 800px;
     height: 100vh;
     border: 1px solid;
     border-radius: 6px;
     margin: auto;
+`
+export const headerContainer = css`
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+`
+
+export const userInfoContainer = css`
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-start;
+    
+
+`
+export const settingButton = css`
+    cursor: pointer;
+    font-size: 25px;
+`;
+export const userInfo = (isOpen) => css`
+    display: ${isOpen ? "flex" : "none"};
 `
 
 export const contentHeader = css`

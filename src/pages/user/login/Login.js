@@ -29,6 +29,12 @@ const Login = () => {
             console.log(error)
             console.log(error.response.data);
         }
+    };
+
+    const loginButton = (e) => {
+        if(e.keyCode === 13){
+            loginHandleSubmit();
+        }
     }
 
     const registerOnClick = () => {
@@ -36,7 +42,7 @@ const Login = () => {
     }
 
     return (
-        <div css={s.container}>
+        <div css={s.container} onKeyUp={loginButton}>
             <div css={s.contentTitle}>
                 <h1 >Login</h1>
             </div>
@@ -52,7 +58,7 @@ const Login = () => {
                 </div>
             </div>
             <div css={s.footer}>
-                <button onClick={loginHandleSubmit} css={s.loginBtn}>로그인</button>
+                <button onClick={onChangeInputHandle} css={s.loginBtn}>로그인</button>
                     <button onClick={registerOnClick} css={s.registerBtn}>회원가입</button>
                 <div css={s.footerContainer}>
                     
