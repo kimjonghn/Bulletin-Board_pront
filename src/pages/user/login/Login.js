@@ -58,10 +58,10 @@ const Login = () => {
                 </div>
             </div>
             <div css={s.footer}>
-                <button onClick={onChangeInputHandle} css={s.loginBtn}>로그인</button>
+                <button onClick={loginHandleSubmit} css={s.loginBtn}>로그인</button>
                     <button onClick={registerOnClick} css={s.registerBtn}>회원가입</button>
                 <div css={s.footerContainer}>
-                    
+                        
                     <p css={s.infoFind}>비밀번호찾기</p>
                     <p css={s.infoFind}>/</p>
                     <p css={s.infoFind}>아이디찾기</p>
