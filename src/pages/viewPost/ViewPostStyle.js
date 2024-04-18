@@ -6,7 +6,6 @@ export const container = css`
     justify-content: center;
     align-items: center;
     width: 1000px;
-    height: 100vh;
     margin: auto; 
 
     border: 1px solid;`
@@ -36,6 +35,34 @@ export const content = css`
     border: 1px solid black;
     font-size: 15px;
     `
+export const commentContainer = css`
+    display: flex;
+`
+
+export const comment = css`
+    margin-top: 10px;
+    width: 600px;
+    height: 40px;
+    resize: none;
+    border: 1px solid black;
+    border-radius: 6px;
+`;
+export const commentSendBtn = css`
+    margin-top: 10px;
+    width: 40px;
+    height: 47px;
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: white;
+    &:hover{
+        background-color: black;
+        color: white;
+    }
+    &:active{
+        background-color: white;
+        color: black;
+    }
+`;
 export const buttonContainer = css`
     display: flex;
     justify-content: space-between;
@@ -60,4 +87,27 @@ export const buttonStyle = css`
         background-color: white;
         color: black;
     }
+`
+export const commentErrorMessage = css`
+    color: red;
+    font-size: 10px;
+`;
+export const commentContentContainer = css`
+    margin-top: 10px;
+    width: 700px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 6px;
+    overflow: auto;
+`
+export const commentContent = css`
+    display: flex;
+    border-bottom: 1px solid #999;
+`   
+export const commentName = css`
+    margin-left: 5px;
+`
+export const commentcontentStyle = css`
+    margin-left: 5px;
+
 `

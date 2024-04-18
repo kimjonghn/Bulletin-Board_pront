@@ -41,7 +41,7 @@ const Modify = () => {
                 setErrorMessage("등록에 실패했습니다. 제목과 내용은 2글자 이상이어야 합니다.")
             }else{
                 alert("등록이 성공적으로 되었습니다.")
-                // navigate("/")
+                navigate("/")
             }
         }catch(error){
 
