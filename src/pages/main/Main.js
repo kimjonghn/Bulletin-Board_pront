@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as s from './MainStyle';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
@@ -7,12 +7,15 @@ import axios  from 'axios';
 import { boardId } from './MainStyle';
 import { FaUserCircle } from "react-icons/fa";
 import UserInfo from '../userInfo/UserInfo';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const Main = () => {
     const navigate = useNavigate();
-    const [ boardState, setBoardState ] = useState(true);
     const [ boardData, setBoardData ] = useState([]);
+    // const [ boardState, setBoardState ] = useState(true);
+    const [filteredBoardData, setFilteredBoardData] = useState([]);
     const [ isOpen, setIsOpen] = useState(false);
+    const [ search, setSearch] = useState({ search: "" })
 
     const getBoard = useQuery(["getBoard"], async() => {
         const option = {
@@ -24,12 +27,12 @@ const Main = () => {
 
         const response = await axios.get("http://localhost:8080/board", option);
         setBoardData(response.data)
-    },{
-        enabled: boardState,
-        onSuccess: () => {
-            setBoardState(false)
-        }
-    });
+    }
+);
+    useEffect(() => {
+        setFilteredBoardData(boardData);
+    },[boardData]); //수정부분
+    
     const userInfoOnClick = () => {
         setIsOpen(!isOpen);
     }
@@ -41,6 +44,17 @@ const Main = () => {
     const clickHandle = () => {
         navigate("/board/write")
     }
+    const findOnClick = () => {
+
+    }
+    const findOnChange = (e) => {
+        const { value } = e.target;
+        setSearch(value);
+        const filteredData = boardData.filter((board) =>
+            board.title.toLowerCase().includes(value.toLowerCase())
+        );
+        setFilteredBoardData(filteredData);
+    }
 
     return (
         <div css={s.container}>
@@ -50,14 +64,25 @@ const Main = () => {
                     <UserInfo css={s.userInfo} isOpen={isOpen}/>
                 </div>
             </div>
+            <div>
+                <h1 css={s.logo}>
+                    Health Community
+                </h1>
+            </div>
+            <div css={s.findContainer}>
+                <div>
+                    <input css={s.findInput} name="search"  onChange={findOnChange} type='search'/>
+                    <FontAwesomeIcon icon={faSearch}/>
+                </div>
+            </div>
             <div css={s.contentHeader}>
                 <p css={s.contentNum}>No</p>
                 <p css={s.contentTitle}>제목</p>
             </div>
             <div css={s.contentBox}>
-                {boardData.map(board => (
+                {filteredBoardData.map((board, index) => (
                     <div key={board.boardId} onClick={()=> contentBtn(board.boardId)} css={s.content}>
-                        <p css={s.boardId}>{board.boardId}</p>
+                        <p css={s.boardId}>{index + 1}</p>
                         <div css={s.boardTitleContainer}>
                             <p css={s.boardTitle}>{board.title}</p>
                         </div>

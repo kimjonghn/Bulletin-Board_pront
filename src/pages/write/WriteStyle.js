@@ -5,11 +5,8 @@ export const container = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1000px;
-    height: 100vh;
     margin: auto;
-
-    border: 1px solid;`
+    `
 
 export const titleBox = css`
     display: flex;
@@ -51,7 +48,7 @@ export const contentInput = css`
 `
 export const sendBox = css`
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     width: 700px;
 
 `
@@ -70,3 +67,18 @@ export const send = css`
         color: black;
     }
     `
+    export const buttonStyle = css`
+    width: 70px;
+    height: 30px;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid black;
+    &:hover{
+        background-color: black;
+        color: white;
+    }
+    &:active{
+        background-color: white;
+        color: black;
+    }
+`

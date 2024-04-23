@@ -6,9 +6,7 @@ export const container = css`
     justify-content: center;
     align-items: center;
     width: 1000px;
-    margin: auto; 
-
-    border: 1px solid;`
+    margin: auto; `
 
 export const writer = css`
     width: 700px;

@@ -43,8 +43,13 @@ const Login = () => {
 
     return (
         <div css={s.container} onKeyUp={loginButton}>
+            <div>
+                <h1 css={s.logo}>
+                    Health Community
+                </h1>
+            </div>
             <div css={s.contentTitle}>
-                <h1 >Login</h1>
+                <p >로그인</p>
             </div>
             <div>
                 <div css={s.mainContainer}>
@@ -62,9 +67,7 @@ const Login = () => {
                     <button onClick={registerOnClick} css={s.registerBtn}>회원가입</button>
                 <div css={s.footerContainer}>
                         
-                    <p css={s.infoFind}>비밀번호찾기</p>
-                    <p css={s.infoFind}>/</p>
-                    <p css={s.infoFind}>아이디찾기</p>
+                  
                     
                 </div>
             </div>

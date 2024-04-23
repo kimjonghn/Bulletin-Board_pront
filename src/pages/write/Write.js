@@ -32,6 +32,9 @@ const Write = () => {
         }
     });
 
+    const listButtonOnClick = () => {
+        navigate("/")
+    }
     const writeHandle = (e) => {
         const { name, value } = e.target;
         setData({...data, [name] : value});
@@ -50,6 +53,7 @@ const Write = () => {
                 <textarea placeholder='내용을 적으세요' css={s.contentInput} onChange={writeHandle}  name='content'/>
             </div>
             <div css={s.sendBox}>
+            <button css={s.buttonStyle} onClick={listButtonOnClick}>목록으로</button>
                 <button css={s.send} onClick={sendButton}>
                     작성완료
                 </button>

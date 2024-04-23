@@ -135,7 +135,6 @@ const ViewPost = () => {
         }
         const response = await axios.get(`http://localhost:8080/board/getComment/${boardId}`, option)
         SetComment(response.data);
-        console.log(response.data)
     },{
         enabled: commentRef,
         onSuccess: () => {
@@ -189,8 +188,7 @@ const ViewPost = () => {
                                     <div css={s.commentName}>{comment.name } : </div>
                                     <div css={s.commentcontentStyle}>{comment.commentContent}</div>
                                 </div>
-                                
-                                
+                            
                             </div>
                         ))}
                     </div>

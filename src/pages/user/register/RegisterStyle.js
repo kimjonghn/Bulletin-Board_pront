@@ -5,10 +5,13 @@ export const container = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 800px;
-    height: 100vh;
-    border: 1px solid;
+    /* width: 1024px; */
+    height: 768px;
+    /* border: 1px solid; */
     margin: auto;
+`
+export const logo = css`
+    font-size: 50px;
 `
 export const mainContainer = css`
     margin: auto;
@@ -17,7 +20,7 @@ export const mainContainer = css`
     flex-direction: column;
 `
 export const contentTitle = css `  
-    font-size : 25px;
+    font-size : 20px;
 `;
 export const inputBox = css`
     width: 200px;

@@ -43,8 +43,13 @@ const Register = () => {
     }
     return (
         <div css={s.container}>
+            <div>
+                <h1 css={s.logo}>
+                    Health Community
+                </h1>
+            </div>
             <div css={s.contentTitle}>
-                <h1>회원가입</h1>
+                <p>회원가입</p>
             </div>
             <div>
                 <div css={s.mainContainer}>
@@ -76,7 +81,6 @@ const Register = () => {
                     <button css={s.loginBtn} onClick={onClickLoginButton}>로그인</button>
                 </div>
                 <div>
-                    아이디/비번 찾기
                 </div>
             </div>
         </div>

@@ -5,11 +5,7 @@ export const container = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 1000px;
-    height: 100vh;
-    margin: auto;
-
-    border: 1px solid;`
+    margin: auto;`
 
 export const titleBox = css`
     display: flex;
