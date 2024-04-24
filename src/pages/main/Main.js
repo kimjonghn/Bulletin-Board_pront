@@ -31,8 +31,8 @@ const Main = () => {
 );
     useEffect(() => {
         setFilteredBoardData(boardData);
-    },[boardData]); //수정부분
-    
+    },[boardData]); 
+
     const userInfoOnClick = () => {
         setIsOpen(!isOpen);
     }
@@ -44,9 +44,8 @@ const Main = () => {
     const clickHandle = () => {
         navigate("/board/write")
     }
-    const findOnClick = () => {
-
-    }
+    
+    
     const findOnChange = (e) => {
         const { value } = e.target;
         setSearch(value);

@@ -7,8 +7,8 @@ import { useMutation } from 'react-query';
 
 const Register = () => {
     const navigate = useNavigate();
-    const [ registerUser, setRegisterUser ] = useState({name:"",email:"",password:"",checkPassword:""});
-    const [ errorMessages, setErrorMessages ] = useState({email: "", password: "",checkPassword:"", name: ""});
+    const [ registerUser, setRegisterUser ] = useState({name:"", email:"",password:"",checkPassword:"",phone:""});
+    const [ errorMessages, setErrorMessages ] = useState({email: "" , password: "",checkPassword:"", name: "",phone:""});
 
     const userRegister = useMutation(async() => {
         const data = {
@@ -60,6 +60,10 @@ const Register = () => {
                         <label>Email</label>
                         <input type='email' placeholder='아이디를 입력하시오'  name='email' onChange={onChangeInputHandle} css={s.inputBox}/>
                         <div css={s.errorMsg}>{errorMessages.email}</div> 
+
+                        <label>Phone</label>
+                        <input type='tel' placeholder='번호를입력하시오'  name='phone' onChange={onChangeInputHandle} css={s.inputBox}/>
+                        <div css={s.errorMsg}>{errorMessages.phone}</div> 
                     
                         <label>Password</label>
                         <input type='password' placeholder='비밀번호를 입력하시오' name='password' onChange={onChangeInputHandle} css={s.inputBox}/>
@@ -69,7 +73,7 @@ const Register = () => {
                         <input type='password' placeholder='비밀번호를 입력하시오' name='checkPassword' onChange={onChangeInputHandle} css={s.inputBox}/>
                     
                     <div>
-
+                        
                     </div>
                 </div>
             </div>

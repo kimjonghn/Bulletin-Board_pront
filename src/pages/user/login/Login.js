@@ -10,6 +10,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [ loginUser, setLoginUser] = useState({ email:"", password:""});
     const [ refresh, setRefresh ] = useRecoilState(authenticatedState)
+    const [ loginErrorMessage, setLoginErrorMessage] = useState("");
 
     const onChangeInputHandle = (e) => {
         const {name , value} = e.target;
@@ -22,12 +23,11 @@ const Login = () => {
             }
         }
         try{
-            const response = await axios.post("http://localhost:8080/auth/login", JSON.stringify(loginUser), option)
+            const response = await axios.post("htp://localhost:8080/auth/login", JSON.stringify(loginUser), option)
             localStorage.setItem("accessToken", response.data);
             setRefresh(true);
         }catch(error){
-            console.log(error)
-            console.log(error.response.data);
+            setLoginErrorMessage(error.response.data.errorData.email);
         }
     };
 
@@ -40,7 +40,9 @@ const Login = () => {
     const registerOnClick = () => {
         navigate("/auth/register");
     }
-
+    const findEmailOnClick = () => {
+        navigate("/auth/findEmail")
+    }
     return (
         <div css={s.container} onKeyUp={loginButton}>
             <div>
@@ -56,7 +58,7 @@ const Login = () => {
                     
                         <label css={s.inputLabel}>Eamil</label>
                         <input type='email' placeholder='아이디를 입력하시오'  name='email' onChange={onChangeInputHandle} css={s.inputBox}/>
-                    
+                        <div css={s.loginErrorMessage}>{loginErrorMessage}</div>
                         <label css={s.inputLabel}>Password</label>
                         <input type='password' placeholder='비밀번호를 입력하시오' name='password' onChange={onChangeInputHandle} css={s.inputBox}/>
                     
@@ -67,7 +69,8 @@ const Login = () => {
                     <button onClick={registerOnClick} css={s.registerBtn}>회원가입</button>
                 <div css={s.footerContainer}>
                         
-                  
+                    <div css={s.findEmail} onClick={findEmailOnClick}>아이디찾기</div>/
+                    <div css={s.findPassword}>비번찾기</div>
                     
                 </div>
             </div>
