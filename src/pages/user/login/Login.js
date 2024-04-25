@@ -23,7 +23,7 @@ const Login = () => {
             }
         }
         try{
-            const response = await axios.post("htp://localhost:8080/auth/login", JSON.stringify(loginUser), option)
+            const response = await axios.post("http://localhost:8080/auth/login", JSON.stringify(loginUser), option)
             localStorage.setItem("accessToken", response.data);
             setRefresh(true);
         }catch(error){
@@ -41,7 +41,10 @@ const Login = () => {
         navigate("/auth/register");
     }
     const findEmailOnClick = () => {
-        navigate("/auth/findEmail")
+        navigate("/auth/findemail")
+    }
+    const findPasswordOnClick = () => {
+        navigate("/auth/findpassword")
     }
     return (
         <div css={s.container} onKeyUp={loginButton}>
@@ -69,8 +72,8 @@ const Login = () => {
                     <button onClick={registerOnClick} css={s.registerBtn}>회원가입</button>
                 <div css={s.footerContainer}>
                         
-                    <div css={s.findEmail} onClick={findEmailOnClick}>아이디찾기</div>/
-                    <div css={s.findPassword}>비번찾기</div>
+                    <div css={s.findEmail} onClick={findEmailOnClick}>이메일찾기</div>/
+                    <div css={s.findPassword} onClick={findPasswordOnClick}>비밀번호 찾기</div>
                     
                 </div>
             </div>

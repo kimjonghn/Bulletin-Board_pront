@@ -11,7 +11,7 @@ const FindEmailResult = () => {
         navigate("/auth/login")
     }
     const findPasswordOnclick = () => {
-        navigate("auth/findPassword")
+        navigate("/auth/findpassword");
     }
     return (
         <div css={s.container}>
