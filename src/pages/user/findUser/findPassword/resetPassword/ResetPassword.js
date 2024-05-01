@@ -23,9 +23,10 @@ const ResetPassword = () => {
         }
         try{
             const response = await axios.put(`http://localhost:8080/auth/updatepassword/${userid}`,data ,option)
-            console.log(response);
+            alert("비밀번호가 성공적으로 변경되었습니다.")
+            navigate("/auth/login")
         }catch(error){
-            console.log(error)
+            alert("비밀번호가 올바르지 않습니다.")
         }
     }
     const onChangeInputHandle = (e) => {

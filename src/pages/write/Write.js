@@ -45,6 +45,7 @@ const Write = () => {
     }
     return (
         <div css={s.container}>
+
             <div css={s.titleBox}>
                 <input placeholder='제목을 입력하시오' css={s.titleBoxInput} onChange={writeHandle}  name='title'/>
                 <div css={s.errorMessage}>{errorMessage}</div>

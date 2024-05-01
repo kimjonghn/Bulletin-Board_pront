@@ -26,6 +26,7 @@ const Main = () => {
         }
 
         const response = await axios.get("http://localhost:8080/board", option);
+ 
         setBoardData(response.data)
     }
 );
@@ -77,6 +78,7 @@ const Main = () => {
             <div css={s.contentHeader}>
                 <p css={s.contentNum}>No</p>
                 <p css={s.contentTitle}>제목</p>
+                <p css={s.contentTime}>작성일</p>
             </div>
             <div css={s.contentBox}>
                 {filteredBoardData.map((board, index) => (
@@ -84,6 +86,9 @@ const Main = () => {
                         <p css={s.boardId}>{index + 1}</p>
                         <div css={s.boardTitleContainer}>
                             <p css={s.boardTitle}>{board.title}</p>
+                        </div>
+                        <div>
+                            <p css={s.boardTime}>{board.time}</p>
                         </div>
                     </div>
                 ))}

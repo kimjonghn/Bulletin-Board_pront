@@ -102,21 +102,23 @@ export const contentHeader = css`
     margin-top: 20px;
     display: flex;
     width: 1000px;
-    /* height: 40px; */
     border-top: 1px solid black;
+    justify-content: space-between;
 `;
 
 export const contentNum = css`
-    width: 70px;
-    display: flex;
-    justify-content: center;
+    margin-left: 30px;
+    font-weight: 600;
+
 `;
 
 export const contentTitle = css`
-    width: 800px;
-    display: flex;
-    justify-content: center;
-    margin-left: 35px;
+    font-weight: 600;
+
+`;
+export const contentTime = css`
+    margin-right: 30px;
+    font-weight: 600;
 `;
 
 export const contentBox = css`
@@ -188,4 +190,7 @@ export const boardTitle = css`
         font-size: 15px;
         font-weight: 700;
     }
+`;
+export const boardTime = css`
+   
 `;
