@@ -6,19 +6,23 @@ import { useMutation, useQuery } from 'react-query';
 import  axios  from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { name } from './../userInfo/UserInfoStyle';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const ViewPost = () => {
     const {boardId} = useParams();
     const [ boardData, setBoardData ] = useState([])
     const [ boardRef, setBoardRef] = useState(true);
     const [ userCheckRef, setUserCheckRef ] = useState(true);
-    const [ boardUserId, setBoardUserId ] = useState();
     const [ modifyFlag, SetModifyFlag ] = useState(false);
     const navigate = useNavigate();
     const [ commentData, setCommentData ] = useState({comment : ""})
     const [ commentErrorMessage, setCommentErrorMessage ] = useState("")
     const [ commentRef, setCommentRef ] = useState(true);
     const [ comment, SetComment ] = useState([]);
+    const [ commentUserCheckRef, setCommentUserCheckRef ] = useState(true);
+    const [ userCheckCommentId, setUserCheckCommentId ] = useState([]);
+    const [ deleteCommentId, setDeleteCommentId ] = useState("");
 
     const getBoard = useQuery(["getBoard"], async() => {
         const option = {
@@ -29,7 +33,6 @@ const ViewPost = () => {
         }
         const response = await axios.get(`http://localhost:8080/board/view/${boardId}`, option);
         setBoardData(response.data)
-        setBoardUserId(response.data.userId)
     },{
         enabled: boardRef,
         onSuccess: () => {
@@ -105,6 +108,9 @@ const ViewPost = () => {
             if(response.status === 200){
                 setCommentData({ comment: "" });
                 setCommentErrorMessage("")
+                setCommentRef(true)
+                setCommentUserCheckRef(true)
+
             }else{
                 console.log("댓글등록중 오류발생" , response.data)
             }
@@ -133,12 +139,69 @@ const ViewPost = () => {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
         }
-        const response = await axios.get(`http://localhost:8080/board/getComment/${boardId}`, option)
+        const response = await axios.get(`http://localhost:8080/board/getcomment/${boardId}`, option)
         SetComment(response.data);
     },{
         enabled: commentRef,
         onSuccess: () => {
             setCommentRef(false);
+        }
+    });
+
+    const commentUserCheck = useQuery(["commentUserCheck"], async() => {
+        const option = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        }
+        const response = await axios.get(`http://localhost:8080/board/comment/usercheck/${boardId}` , option)
+        const commentIds = response.data.map(comment => comment.commentId);
+        setUserCheckCommentId(commentIds)
+    },{
+        enabled: commentUserCheckRef,
+        onSuccess: () => {
+            setCommentUserCheckRef(false)
+        }
+    });
+
+    const commentDeleteOnClick = (commentId) => {
+        setDeleteCommentId(commentId);
+        
+    }
+
+    useEffect(() => {
+        if (deleteCommentId) {
+            commentDeleteStart();
+        }
+    }, [deleteCommentId]);
+
+    const commentDeleteStart = async () => {
+        try {
+            console.log("제발" + deleteCommentId);
+            await commentDelete.mutate();
+        } catch(error) {
+            console.error("댓글 삭제 중 오류가 발생했습니다:", error);
+        }
+    }
+
+    const commentDelete = useMutation (async() => {
+        const option = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        }
+        const response = await axios.delete(`http://localhost:8080/board/commentdelete/${boardId}/${deleteCommentId}`,option)
+        return response.data
+        
+    },{
+        onSuccess: () => {
+            setCommentRef(true)
+            setDeleteCommentId("")
+        },
+        onError : (error) => {
+            console.error("댓글 삭제 중 오류가 발생했습니다:", error);
         }
     });
 
@@ -153,7 +216,6 @@ const ViewPost = () => {
             </div>
             <div css={s.content}>
                 {boardData.content}
-                
             </div>
             <div css={s.buttonContainer}>
                     <button css={s.buttonStyle} onClick={listButtonOnClick}>목록으로</button>
@@ -185,13 +247,21 @@ const ViewPost = () => {
                             <div key={comment.commentId} >
 
                                 <div css={s.commentContent}>
-                                    <div css={s.commentName}>{comment.name } : </div>
-                                    <div css={s.commentcontentStyle}>{comment.commentContent}</div>
+                                    <div css={s.commentBox}>
+                                        <div css={s.commentName}>{comment.name } : </div>
+                                        <div css={s.commentcontentStyle}>{comment.commentContent}</div>
+                                    </div>    
+                                    {userCheckCommentId.includes(comment.commentId) && (
+                                            <div css={s.commentDeleteStyleContainer}>
+                                                <FontAwesomeIcon icon={faXmark} onClick={() => commentDeleteOnClick(comment.commentId)} css={s.commentDeleteStyle}/>
+                                            </div>
+                                        )}
+                                    
+                                    
                                 </div>
-                            
                             </div>
                         ))}
-                    </div>
+                    </div>  
         </div>
     );
 };

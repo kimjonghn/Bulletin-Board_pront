@@ -101,7 +101,12 @@ export const commentContentContainer = css`
 export const commentContent = css`
     display: flex;
     border-bottom: 1px solid #999;
+    justify-content: space-between;
 `   
+export const commentBox = css`
+    display: flex;
+    justify-content: center;
+`
 export const commentName = css`
     margin-left: 5px;
 `
@@ -109,3 +114,10 @@ export const commentcontentStyle = css`
     margin-left: 5px;
 
 `
+export const commentDeleteStyleContainer = css `
+    margin-right: 5px;
+`;
+export const commentDeleteStyle = css `
+    cursor: pointer;
+    color: red;
+`;
