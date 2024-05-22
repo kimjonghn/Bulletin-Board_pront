@@ -7,6 +7,49 @@ export const container = css`
     align-items: center;
     margin: auto;
     `
+export const imageContainer = css`
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    width: 80px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 6px;
+    &:hover{
+        background-color: black;
+        color: white;
+    }
+    &:active{
+        background-color: white;
+        color: black;
+    }
+`
+export const imageInputBox = css`
+    cursor: pointer;
+    
+`
+export const imageInput = css`
+    display: none;
+`
+export const imagePreviewContainer = css`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border: 2px solid #dedede;
+    border-radius: 6px;
+    
+`
+export const imageWrapper = css`
+    display: 0 0 auto;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    overflow: hidden;
+`
+export const imagePreview = css`
+    width: 100%;
+    height: 100%;
+`   
 
 export const titleBox = css`
     display: flex;
@@ -27,6 +70,7 @@ export const titleBoxInput = css`
     width: 695px;
     height: 80px;
     border: 1px solid black;
+    border-radius: 6px;
     align-items: center;
     font-size: 40px;
 `
@@ -43,6 +87,7 @@ export const contentInput = css`
     width: 700px;
     height: 470px;
     border: 1px solid black;
+    border-radius: 6px;
     resize: none;
     font-size: 15px;
 `

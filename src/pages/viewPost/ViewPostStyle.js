@@ -23,16 +23,28 @@ export const titleBox = css`
     height: 80px;
     font-size: 40px;
     border: 1px solid black;
+    border-radius: 6px;
 `;
 
 export const content = css`
     display: flex;
+    flex-direction: column;
     margin-top: 20px;
     width: 700px;
     height: 470px;
     border: 1px solid black;
+    border-radius: 6px;
     font-size: 15px;
+    overflow-x: auto;
+    max-width: 700px;
     `
+export const imgStyle = css`
+     width: 200px;
+     height: 200px;
+`;
+export const contentBox = css`
+    display: flex;
+`
 export const commentContainer = css`
     display: flex;
 `

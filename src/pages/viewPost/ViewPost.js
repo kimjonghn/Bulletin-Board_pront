@@ -167,7 +167,6 @@ const ViewPost = () => {
 
     const commentDeleteOnClick = (commentId) => {
         setDeleteCommentId(commentId);
-        
     }
 
     useEffect(() => {
@@ -176,10 +175,9 @@ const ViewPost = () => {
         }
     }, [deleteCommentId]);
 
-    const commentDeleteStart = async () => {
+    const commentDeleteStart = () => {
         try {
-            console.log("제발" + deleteCommentId);
-            await commentDelete.mutate();
+            commentDelete.mutate();
         } catch(error) {
             console.error("댓글 삭제 중 오류가 발생했습니다:", error);
         }
@@ -204,7 +202,6 @@ const ViewPost = () => {
             console.error("댓글 삭제 중 오류가 발생했습니다:", error);
         }
     });
-
     return (
         <div css={s.container}>
             <div css={s.writer}>
@@ -215,7 +212,16 @@ const ViewPost = () => {
                 {boardData.title}
             </div>
             <div css={s.content}>
-                {boardData.content}
+                <div>
+                    {boardData.images ? (
+                        boardData.images.split(',').map((image, index) => (
+                                <img key={index} src={`http://localhost:8080/images/${encodeURIComponent(image)}`} alt={`Board Image ${index}`} css={s.imgStyle}/>                        
+                        ))
+                    ) : null}
+                </div> 
+                <div css={s.contentBox}>
+                    {boardData.content}
+                </div>
             </div>
             <div css={s.buttonContainer}>
                     <button css={s.buttonStyle} onClick={listButtonOnClick}>목록으로</button>
