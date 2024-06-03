@@ -41,6 +41,7 @@ export const content = css`
 export const imgStyle = css`
      width: 200px;
      height: 200px;
+     overflow: hidden;
 `;
 export const contentBox = css`
     display: flex;
