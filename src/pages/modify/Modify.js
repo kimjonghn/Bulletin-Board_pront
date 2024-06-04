@@ -48,10 +48,6 @@ const Modify = () => {
             }
         }
         try{
-            console.log(getBoardData.title)
-            console.log(getBoardData.content)
-            console.log(imageData)
-            console.log(existingImage)
 
             const formData = new FormData();
             formData.append("title", getBoardData.title);
@@ -93,19 +89,19 @@ const Modify = () => {
         registerBoard.mutate();
     }
     const handleImageOnchange = (e) => {
-        const imageFiles = e.target.files;
+        const newImageFiles = Array.from(e.target.files);
         const maxImages = 3;
 
-        const totalimages = existingImage.length + imageFiles.length;
+        const totalimages = existingImage.length + newImageFiles.length + imagePreviews.length ;
 
         if(totalimages > maxImages){
             alert(`최대 ${maxImages}장의 이미지만 선택할 수 있습니다.`)
             return;
         }
         
-        const imageFilesArray = Array.from(imageFiles);
-        const previews = imageFilesArray.map(file => URL.createObjectURL(file));
-        setImageData(imageFilesArray);
+        const updatedImageFiles = [...imageData, ...newImageFiles];
+        const previews = updatedImageFiles.map(file => URL.createObjectURL(file));
+        setImageData(updatedImageFiles);
         setImagePreviews(previews);
     }
     useEffect(() => {
@@ -116,12 +112,15 @@ const Modify = () => {
     }, [imagePreviews]);
 
     const existingImageDeleteOnClick = (index) => {
-        const updateImages = existingImage.filter((image, i ) => i !== index);
-        setexistingImage(updateImages);
+        
+        const updatedImageExistingImage  = existingImage.filter((iamge, i) => i !== index);
+        setexistingImage(updatedImageExistingImage)
     }
     const imageDeleteOnClick = (index) => {
-        const updateImages = imagePreviews.filter((iamge, i) => i !== index);
-        setImagePreviews(updateImages)
+        const updatedImagePreviews  = imagePreviews.filter((iamge, i) => i !== index);
+        const updatedImageData  = imageData.filter((iamge, i) => i !== index);
+        setImagePreviews(updatedImagePreviews)
+        setImageData(updatedImageData);
 
     }
     return (

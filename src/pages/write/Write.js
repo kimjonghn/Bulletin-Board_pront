@@ -6,6 +6,8 @@ import { authenticatedState } from '../../atoms/auth/AuthAtoms';
 import { useMutation } from 'react-query';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const Write = () => {
     const [ data, setData ] = useState({ title:"", content:"" });
@@ -51,19 +53,25 @@ const Write = () => {
     }
     //이미지
     const handleImageOnchange = (e) => {
-        const imageFiles = e.target.files;
+        const newImageFiles = Array.from(e.target.files); // 새 이미지 파일들
         const maxImages = 3;
-
-        if(imageFiles.length > maxImages){
+        const totalimages = newImageFiles.length + imagePreviews.length;
+        if(totalimages > maxImages){
             alert(`최대 ${maxImages}장의 이미지만 선택할 수 있습니다.`)
             return;
         }
-        const imageFilesArray = Array.from(imageFiles);
-        const previews = imageFilesArray.map(file => URL.createObjectURL(file));
-        setImageData(imageFilesArray);
+        const updatedImageFiles = [...imageData, ...newImageFiles]; // 기존 이미지 파일들과 새 이미지 파일들 병합
+        const previews = updatedImageFiles.map(file => URL.createObjectURL(file));
+        setImageData(updatedImageFiles);
         setImagePreviews(previews);
     }
+    const imageDeleteOnClick = (index) => {
+        const updatedImagePreviews  = imagePreviews.filter((iamge, i) => i !== index);
+        const updatedImageData  = imageData.filter((iamge, i) => i !== index);
+        setImagePreviews(updatedImagePreviews)
+        setImageData(updatedImageData);
 
+    }
     return (
         <div css={s.container}>
             <div css={s.imageContainer}>
@@ -76,6 +84,7 @@ const Write = () => {
                     {imagePreviews.map((image, index) => (
                         <div key={index} css={s.imageWrapper}>
                             <img key={index} src={image} alt={`Image ${index}`} css={s.imagePreview}/>
+                            <FontAwesomeIcon icon={faXmark} css={s.deleteImage} onClick={() => imageDeleteOnClick(index)}/>
                         </div>
                         ))}
             </div>

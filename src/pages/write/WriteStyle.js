@@ -40,7 +40,7 @@ export const imagePreviewContainer = css`
     
 `
 export const imageWrapper = css`
-    display: 0 0 auto;
+    position: relative;
     width: 100px;
     height: 100px;
     margin: 10px;
@@ -50,6 +50,14 @@ export const imagePreview = css`
     width: 100%;
     height: 100%;
 `   
+export const deleteImage = css`
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    color: red;
+    cursor: pointer;
+    
+`
 
 export const titleBox = css`
     display: flex;

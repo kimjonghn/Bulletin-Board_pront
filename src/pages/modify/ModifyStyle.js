@@ -39,7 +39,6 @@ export const imagePreviewContainer = css`
     
 `
 export const imageWrapper = css`
-    /* display: 0 0 auto; */
     position: relative;
     width: 100px;
     height: 100px;
@@ -49,7 +48,6 @@ export const imageWrapper = css`
 export const imagePreview = css`
     width: 100%;
     height: 100%;
-    object-fit: cover;
 `   
 export const deleteImage = css`
     position: absolute;
